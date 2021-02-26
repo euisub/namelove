@@ -1,27 +1,27 @@
-// const navList = document.querySelector(".nev-list");
-// const toggleIcon = document.querySelector(".toggle-icon");
+
 const inputName_1 = document.getElementById("name-1");
 const inputName_2 = document.getElementById("name-2");
-const resultButton = document.querySelector(".result-button");
-const resultCount = document.querySelector(".result-count");
-const resultText = document.querySelector(".result-text");
-const inputContainer = document.querySelector(".input-container");
-const reloadButton = document.querySelector(".reload");
+const resultButton = document.querySelector(".btn-style");
+const bgFrame = document.querySelector(".bg-frame");
+const resultCount = document.querySelector(".result-number");
+const btn1 = document.querySelector(".btn-1");
+const btn2 = document.querySelector(".btn-2");
+const imgExplanation = document.querySelector(".img-explanation");
+const inputName = document.querySelector(".input-name");
 
-var onlyKorean = function() {
-  var pattern = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g;
-  this.value = this.value.replace(pattern, '');
-  alert("한글만 입력 가능합니다.");
-};
-inputName_1.addEventListener('keypress', onlyKorean);
-inputName_2.addEventListener('keypress', onlyKorean);
 
-// toggleIcon.addEventListener('click',() => {
-//     console.log(navList)
-//     navList.classList.toggle("active");
-// })
+console.log(resultButton);
+// var onlyKorean = function() {
+//   var pattern = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g;
+//   this.value = this.value.replace(pattern, '');
+//   alert("한글만 입력 가능합니다.");
+// };
+// inputName_1.addEventListener('keypress', onlyKorean);
+// inputName_2.addEventListener('keypress', onlyKorean);
+
 
 resultButton.addEventListener('click',() => {
+    bgFrame.style.backgroundImage = 'url("result-frame.png")';
     let len_1 = inputName_1.value.length;
     let len_2 = inputName_2.value.length;
     let check = document.getElementsByClassName('count-list');
@@ -30,14 +30,19 @@ resultButton.addEventListener('click',() => {
     if(len_1 < 2 || len_1 > 4 || len_2 < 2 || len_2 > 4) {
         alert("이름은 최소 두 글자 최대 네 글자 입력 가능합니다.")
     }else{
-        inputContainer.style.display = "none";
         if(check.length != 0 ){
             while( parents.hasChildNodes()){
                 parents.removeChild( parents.firstChild );
             }
         }
+        
+        
+        
         fnCalculateLoveProphecy();
-        reloadButton.style.display = "block";
+        btn1.style.display = "none";
+        imgExplanation.style.display = "none";
+        inputName.style.visibility="hidden"
+        btn2.style.display = "inline-block";
         
         
     }
@@ -236,6 +241,13 @@ function fnCalculateLoveProphecy() {
     let lenTotal = nameOne.length + nameTwo.length;
     for(var i = 0 ; i < lenTotal ; i++){
         let liElement = document.createElement("li");
+        if( i%2 ==0){
+        liElement.setAttribute('class','name-red');    
+        }else{
+        liElement.setAttribute('class','name-blue');    
+        }
+        
+        
         ulElement.appendChild(liElement);
         if(i % 2 == 0){
             if(nameOne.substring(num_1, num_1+1) == ""){
@@ -337,7 +349,7 @@ function fnCalculateLoveProphecy() {
 
     resultNum = Number(numArray[0])*10 + Number(numArray[1]);
     resultCount.innerHTML = resultNum +"%";
-    resultText.innerHTML = inputName_1.value +"(A)씨는 "+inputName_2.value+"(B)씨를 "+resultNum+"% 사랑합니다."
+    // resultText.innerHTML = inputName_1.value +"(A)씨는 "+inputName_2.value+"(B)씨를 "+resultNum+"% 사랑합니다."
     console.log(resultNum)
     // console.log(numArray)
 

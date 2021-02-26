@@ -37,9 +37,12 @@
         />
         <meta name="twitter:image" content="https://namelove.netlify.app/article/article1.html" />
         <meta name="twitter:domain" content="https://namelove.netlify.app/" />
-        
+
         <!-- 구글 서치콘솔 -->
-        <meta name="google-site-verification" content="URnUOSUmKcyRuNkkA9c6hOGBRl_dYz3tYW6RVk31GT0" />
+        <meta
+            name="google-site-verification"
+            content="URnUOSUmKcyRuNkkA9c6hOGBRl_dYz3tYW6RVk31GT0"
+        />
 
         <title>사랑의 퍼센트</title>
         <link rel="stylesheet" href="style-.css" />
@@ -48,47 +51,56 @@
             href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap"
             rel="stylesheet"
         />
-        
+
         <!-- 구글애드센스 -->
-        <script data-ad-client="ca-pub-2246213625662772" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script
+            data-ad-client="ca-pub-2246213625662772"
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
     </head>
     <body>
-        <container class="container">
-            <div class="background-container">
-                <div class="input-container">
-                    <div class="title-text">
-                        <h1>♡ 사랑의 퍼센트 ♡</h1>
-                    </div>
-                    <div class="title-sub-text">
-                        <h3>이름을 통해 사랑의 ' % ' 를 확인해보세요.</h3>
-                    </div>
-                    <div class="name-text">
-                        <p>이름 - A</p>
-                        <p>이름 - B</p>
-                    </div>
-                    <div class="name-input">
-                        <input type="text" id="name-1" />
-                        <input type="text" id="name-2" />
-                    </div>
+        <nav class="nav-bar">
+            <a href="https://whoareyou-me.tistory.com/" class="logo">
+                <span class="logo-text"> 테스트 Click </span></a
+            >
+            <ul class="ul-content">
+                <li><a href="https://funface.netlify.app/">개관상 성격</a></li>
+                <li><a href="https://dogfacetest.netlify.app/">개관상 전생</a></li>
+                <li><a href="https://namelove.netlify.app/">이름궁합</a></li>
+                <li><a href="https://lottolotto.netlify.app/">꿈해몽.로또번호생성기</a></li>
+                <li><a href="https://funfunpuzzlegame.netlify.app/">퍼즐게임</a></li>
+                <li><a href="https://animalface.site/ko/index.html">동물상 테스트</a></li>
+            </ul>
+        </nav>
+        <hr />
 
-                    <div class="button">
-                        <input type="button" value="이름궁합 확인" class="result-button" />
-                    </div>
+        <div class="container">
+            <div class="frame-content">
+                <div class="bg-frame">
+                    <div class="result-list" id="name-list"></div>
+                    <div class="result-number"></div>
                 </div>
+                <!-- <img src="frame-bg.png" class="img-frame" /> -->
+                <div class="img-explanation">
+                    
+                </div>
+                <!-- <img src="explanation.png" class="img-explanation" /> -->
 
-                <div class="result-container">
-                    <div class="love-list" id="name-list"></div>
-                    <div class="result-count"></div>
-                    <div class="result-text"></div>
-                    <div class="reload">
-                        <a href="index.html">
-                            <input type="button" value="다시하기" id="reload"
-                        /></a>
-                    </div>
+                <div class="input-name">
+                    <input type="text" class="input-style" placeholder="이름 A" id="name-1" />
+                    <input type="text" class="input-style" placeholder="이름 B" id="name-2" />
                 </div>
+                
+                <div class="check-button">
+                    <input type="button" class="btn-style btn-1" value="이름궁합 결과확인 &#10140;" />
+                    <a href="https://namelove.netlify.app/"><input type="button" class="btn-style btn-2" value="다시하기" /></a>
+                </div>
+                
+                
             </div>
-        </container>
-        
+        </div>
+
         <!-- <ins class="kakao_ad_area" style="display:none;" 
  data-ad-unit    = "DAN-ad9nv3GPs0HVQdKd" 
  data-ad-width   = "320" 
