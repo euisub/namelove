@@ -188,7 +188,7 @@ justify-content: center;
 }
 
 .name-list li{
-    padding: 0 2.5%;
+    padding: 0 15px;
 }
 
 .name-red{
@@ -247,9 +247,9 @@ justify-content: center;
         font-size: 1.5rem;
     }
     
-    .name-list li{
+    /* .name-list li{
         padding: 0 1.8%;
-    }
+    } */
     
     .count-list{
         font-size: 1.3rem;
@@ -287,9 +287,9 @@ justify-content: center;
         font-size: 1.5rem;
     }
     
-    .name-list li{
+    /* .name-list li{
         padding: 0 1.8%;
-    }
+    } */
     
     .count-list{
         font-size: 1.3rem;

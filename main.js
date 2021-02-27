@@ -8,6 +8,10 @@ const btn2 = document.querySelector('.btn-2');
 const imgExplanation = document.querySelector('.img-explanation');
 const inputName = document.querySelector('.input-name');
 
+let elementList = [];
+var mql = window.matchMedia('screen and (max-width: 500px)');
+var mql_2 = window.matchMedia('screen and (max-width: 500px)');
+
 console.log(resultButton);
 // var onlyKorean = function() {
 //   var pattern = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g;
@@ -17,14 +21,137 @@ console.log(resultButton);
 // inputName_1.addEventListener('keypress', onlyKorean);
 // inputName_2.addEventListener('keypress', onlyKorean);
 
-var filter = 'win16|win32|win64|mac';
+function setPadding(p1, p2, p3, p4) {
+    $(elementList[0]).css('margin-top', p1);
+    $(elementList[0]).children().css('padding', p2);
 
-if (navigator.platform) {
-    if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
-        alert('Mobile');
-    } else {
-        alert('PC');
+    for (let i = 1; i < elementList.length; i++) {
+        $(elementList[i]).css('padding-bottom', p3);
+        $(elementList[i]).children().css('padding', p4);
     }
+}
+function viewCheck(length) {
+    // $('ul').children().css('padding', '0 2.5%');
+    console.log(elementList);
+    switch (length) {
+        case 4:
+             paddingSize(
+                '10%',
+                '0 3.8%',
+                '2.2rem',
+                '0 5.2%',
+                '7.5%',
+                '0 2.8%',
+                '1rem',
+                '0 4%',
+                '7%',
+                '0 3%',
+                '0.8rem',
+                '0 5%'
+            );
+            break;
+        case 5:
+            paddingSize(
+                '5%',
+                '0 3.8%',
+                '2.3rem',
+                '0 5.2%',
+                '3%',
+                '0 2.8%',
+                '1.05rem',
+                '0 4%',
+                '3%',
+                '0 3%',
+                '0.65rem',
+                '0 5%'
+            );
+            break;
+
+        case 6:
+            paddingSize(
+                '8%',
+                '0 2.5%',
+                '1.4rem',
+                '0 1.45rem',
+                '5%',
+                '0 1.8%',
+                '0.5rem',
+                '0 3%',
+                '5%',
+                '0 1.8%',
+                '0.2rem',
+                '0 3.3%'
+            );
+            break;
+        case 7:
+            paddingSize(
+                '6.5%',
+                '0 1.5%',
+                '1rem',
+                '0 1.05rem',
+                '5%',
+                '0 1.8%',
+                '0.5rem',
+                '0 3%',
+                '5%',
+                '0 1.8%',
+                '0.2rem',
+                '0 3.3%'
+            );
+            break;
+        case 8:
+            console.log('8');
+            break;
+        default:
+            console.log('6');
+            break;
+    }
+
+    // console.log(ulElement.children);
+}
+
+function paddingSize(p1, p2, p3, p4, p_5_1, p_5_2, p_5_3, p_5_4, p_4_1, p_4_2, p_4_3, p_4_4) {
+    if (mql.matches) {
+        mql = window.matchMedia('screen and (max-width: 400px)');
+        if (mql.matches) {
+            //400px 보다 작을때
+            console.log('화면의 너비가 400px 보다 작습니다.');
+            setPadding(p_4_1, p_4_2, p_4_3, p_4_4);
+        } else {
+            //500px 보다 작을때
+            console.log('화면의 너비가 500px 보다 작습니다.');
+            setPadding(p_5_1, p_5_2, p_5_3, p_5_4);
+        }
+    } else {
+        // 500px 보다 클때 default 값
+        setPadding(p1, p2, p3, p4);
+        console.log('원본');
+        // content.setAttribute('style', 'padding:0 2.5%;');
+    }
+
+    mql_2.addListener(function (e) {
+        if (e.matches) {
+            //500px 보다 작아졌을 때
+            setPadding(p_5_1, p_5_2, p_5_3, p_5_4);
+            console.log('500');
+            mql_2 = window.matchMedia('screen and (max-width: 400px)');
+            mql_2.addListener(function (e) {
+                if (e.matches) {
+                    //400px 보다 작아졌을 때
+                    setPadding(p_4_1, p_4_2, p_4_3, p_4_4);
+                    console.log('400');
+                } else {
+                    //400px 보다 커졌을 때
+                    setPadding(p_5_1, p_5_2, p_5_3, p_5_4);
+                    console.log('500sss');
+                }
+            });
+        } else {
+            //원본 default 값
+            setPadding(p1, p2, p3, p4);
+            console.log('데스크탑 화면 입니다.');
+        }
+    });
 }
 
 resultButton.addEventListener('click', () => {
@@ -352,6 +479,7 @@ function fnCalculateLoveProphecy() {
 
     let ulElement = document.createElement('ul');
     ulElement.setAttribute('class', 'name-list');
+    elementList.push(ulElement);
     document.getElementById('name-list').appendChild(ulElement);
     let num_1 = 0;
     let num_2 = 0;
@@ -383,11 +511,13 @@ function fnCalculateLoveProphecy() {
             }
         }
 
-        liElement.setAttribute('style', 'padding:0 2.5%;');
+        // viewCheck(liElement);
+        // liElement.setAttribute('style', 'padding:0 2.5%;');
     }
 
     let ulElement_2 = document.createElement('ul');
     ulElement_2.setAttribute('class', 'count-list');
+    elementList.push(ulElement_2);
     document.getElementById('name-list').appendChild(ulElement_2);
     num_1 = 0;
     num_2 = 0;
@@ -428,7 +558,7 @@ function fnCalculateLoveProphecy() {
     while (roof) {
         eval('ulElement_' + num + "= document.createElement('ul')");
         eval('ulElement_' + num + ".setAttribute('class','count-list')");
-
+        elementList.push(eval('ulElement_' + num));
         let lenCount = numArray.length;
         for (i = 0; i < lenCount - 1; i++) {
             let numSum = 0;
@@ -458,75 +588,13 @@ function fnCalculateLoveProphecy() {
     }
 
     bgFrame.style.backgroundImage = `url("result-frame-${lenTotal}.png")`;
-    const test = document.querySelector('.count-list');
-    console.log('tt = ' + test);
-    switch (lenTotal) {
-        case 4:
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        default:
-    }
+
+    viewCheck(lenTotal);
     resultNum = Number(numArray[0]) * 10 + Number(numArray[1]);
     resultCount.innerHTML = resultNum + '%';
     // resultText.innerHTML = inputName_1.value +"(A)씨는 "+inputName_2.value+"(B)씨를 "+resultNum+"% 사랑합니다."
     console.log(resultNum);
     // console.log(numArray)
-
-    // for(var i = 0 ; i <(nameOne.length + nameTwo.length) ; i++){
-    //     let liElement = document.createElement("li");
-    //     ulElement.appendChild(liElement);
-    //     if(i % 2 == 0){
-    //         if(nameOne.substring(num_1, num_1+1) == null){
-    //             liElement.innerText=nameTwo.substring(num_2, num_2+1);
-    //             num_2++;
-    //         }else{
-    //             liElement.innerText=nameOne.substring(num_1, num_1+1);
-    //             num_1++;
-    //         }
-
-    //     }else{
-    //         if(nameTwo.substring(num_2, num_2+1) == null){
-    //             liElement.innerText=nameOne.substring(num_1, num_1+1);
-    //             num_1++;
-    //         }else{
-    //             liElement.innerText=nameTwo.substring(num_2, num_2+1);
-    //             num_2++;
-    //         }
-
-    //     }
-    // }
-
-    // console.log(fnCharacterStrokeCount(arrNameOne[0]))
-
-    // var firstStrokeCount = fnCharacterStrokeCount(arrNameOne[0]) + fnCharacterStrokeCount(arrNameTwo[0]);
-    // var secondStrokeCount = fnCharacterStrokeCount(arrNameOne[1]) + fnCharacterStrokeCount(arrNameTwo[1]);
-    // var thirdStrokeCount = fnCharacterStrokeCount(arrNameOne[2]) + fnCharacterStrokeCount(arrNameTwo[2]);
-
-    // // start : 화면 표시
-    // // idNameOneFirst.innerHTML    = nameOne.substring(0, 1);
-    // // idNameOneSecond.innerHTML   = nameOne.substring(1, 2);
-    // // idNameOneThird.innerHTML    = nameOne.substring(2, 3);
-
-    // console.log(nameOne.substring(0, 1))
-    // console.log(nameOne.substring(1, 2))
-    // console.log(nameOne.substring(2, 3))
-
-    // idNameOneFirstStrokeCount.innerHTML    = fnCharacterStrokeCount(arrNameOne[0]);
-    // idNameOneSecondStrokeCount.innerHTML   = fnCharacterStrokeCount(arrNameOne[1]);
-    // idNameOneThirdStrokeCount.innerHTML    = fnCharacterStrokeCount(arrNameOne[2]);
-
-    // idNameTwoFirst.innerHTML    = nameTwo.substring(0, 1);
-    // idNameTwoSecond.innerHTML   = nameTwo.substring(1, 2);
-    // idNameTwoThird.innerHTML    = nameTwo.substring(2, 3);
-
-    // idNameTwoFirstStrokeCount.innerHTML    = fnCharacterStrokeCount(arrNameTwo[0]);
-    // idNameTwoSecondStrokeCount.innerHTML   = fnCharacterStrokeCount(arrNameTwo[1]);
-    // idNameTwoThirdStrokeCount.innerHTML    = fnCharacterStrokeCount(arrNameTwo[2]);
-    // finsh : 화면 표시
-
-    // fnLoveProphecy(firstStrokeCount, secondStrokeCount, thirdStrokeCount)
 }
 
 function fnCharacterStrokeCount(source) {
