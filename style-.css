@@ -90,7 +90,7 @@ justify-content: center;
     width: 100%;
     height: 57px;
     margin-top: 2.5rem;
-    background-image: url("explanation.png");
+    background-image: url("images/explanation.png");
     background-repeat: no-repeat;
     background-size: contain ;
     background-position:center center;
@@ -157,7 +157,7 @@ justify-content: center;
     /* height : auto; */
     position: relative;
     top:10px;
-    background-image: url("frame-bg.png");
+    background-image: url("images/frame-bg.png");
     background-repeat: no-repeat;
     background-size: contain ;
     background-position:center center;

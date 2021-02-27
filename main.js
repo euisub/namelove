@@ -35,7 +35,7 @@ function viewCheck(length) {
     console.log(elementList);
     switch (length) {
         case 4:
-             paddingSize(
+            paddingSize(
                 '10%',
                 '0 3.8%',
                 '2.2rem',
@@ -184,7 +184,7 @@ resultButton.addEventListener('click', () => {
 
         fnCalculateLoveProphecy();
         btn1.style.display = 'none';
-        imgExplanation.style.display = 'none';
+        // imgExplanation.style.display = 'none';
         inputName.style.visibility = 'hidden';
         btn2.style.display = 'inline-block';
     }
@@ -600,10 +600,14 @@ function fnCalculateLoveProphecy() {
         paddingNum = paddingNum + 50;
     }
 
-    bgFrame.style.backgroundImage = `url("result-frame-${lenTotal}.png")`;
+    bgFrame.style.backgroundImage = `url("images/result-frame-${lenTotal}.png")`;
 
     viewCheck(lenTotal);
     resultNum = Number(numArray[0]) * 10 + Number(numArray[1]);
+    imgExplanation.style.backgroundImage = `url("images/result-text-${numArray[0]}.png")`;
+    imgExplanation.style.height = '120px';
+    imgExplanation.style.backgroundSize = 'contain';
+    imgExplanation.style.backgroundRepeat = 'no-repeat';
     resultCount.innerHTML = resultNum + '%';
     // resultText.innerHTML = inputName_1.value +"(A)씨는 "+inputName_2.value+"(B)씨를 "+resultNum+"% 사랑합니다."
     console.log(resultNum);
