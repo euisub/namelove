@@ -219,6 +219,10 @@ justify-content: center;
 }
 /* --------------------------------------------*/
 
+.img-border{
+    border: 5px solid white;
+    border-radius: 5px;
+}
 
 
 @media screen and (max-width: 1080px){
